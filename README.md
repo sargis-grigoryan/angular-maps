@@ -11,6 +11,12 @@ Beautiful, reactive, responsive charts for Angular.JS using D3.js
 
 # Installation
 
+```shell
+bower install angular-map-it
+```
+
+or
+
 copy the files from dist/. Then add the sources to your code (adjust paths as needed) after adding the dependencies for Angular and d3.js first:
 
 ```html
