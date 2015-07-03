@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Angular-maps by sidnan</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Angular-maps</h1>
+        <h2>Reactive, responsive maps for AngularJS using D3.js</h2>
+        <a href="https://github.com/sidnan/angular-maps" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="angular-map-it" class="anchor" href="#angular-map-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>angular-map-it</h1>
+
+<p>Beautiful, reactive, responsive charts for Angular.JS using D3.js</p>
+
+<h1>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h1>
+
+<ol>
+<li>angular ~v1.4</li>
+<li>d3 v3.3.13</li>
+</ol>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<div class="highlight highlight-shell"><pre>bower install angular-map-it</pre></div>
+
+<p>or</p>
+
+<p>copy the files from dist/. Then add the sources to your code (adjust paths as needed) after adding the dependencies for Angular and d3.js first:</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>bower_components/angular/angular.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>bower_components/d3/index.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+
+&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>js/angular-map-it.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<h1>
+<a id="utilisation" class="anchor" href="#utilisation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utilisation</h1>
+
+<p>There are 3 types of maps so 3 directives:</p>
+
+<ol>
+<li>
+<em>globe</em> :- Orthographic projection of world (3D projection) with choropleth coloring enabled, rotate, zoom</li>
+<li>
+<em>globe-touch</em> :- Orthographic projection of world (3D projection) with touch enabled, choropleth coloring enabled, rotate, zoom</li>
+<li>
+<em>world-map</em> :- mercator projection with choropleth, zoom option, touch enabled</li>
+</ol>
+
+<p>They all use mostly the same API:</p>
+
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>world-data</code></td>
+<td>empty array</td>
+<td>values across the world. Value of each country with country code. our data source would be json passed thru world-data attribute</td>
+</tr>
+<tr>
+<td><code>value-range</code></td>
+<td>[0,100]</td>
+<td>world data value range would be an array of size 2 passed thru value-range attribute. It will help color the world based on the value</td>
+</tr>
+<tr>
+<td><code>color-range</code></td>
+<td>["#F03B20", "#FFEDA0"]</td>
+<td>color range would be an array of size 2 passed thru color-range attribute. This will color the world based on the value range.</td>
+</tr>
+<tr>
+<td><code>dimension</code></td>
+<td>600. Minimum=200. Maximum=800.</td>
+<td>dimension would be number passed thru dimension attribute. This is the diameter of the globe</td>
+</tr>
+<tr>
+<td><code>map-width</code></td>
+<td>600. Minimum=400. Maximum=1240</td>
+<td>width of the world map</td>
+</tr>
+<tr>
+<td><code>country-fill-color</code></td>
+<td>#aaa</td>
+<td>default color which fills the country if a country does not have data value</td>
+</tr>
+<tr>
+<td><code>country-border-color</code></td>
+<td>#fff</td>
+<td>default color which fills the country border</td>
+</tr>
+</tbody>
+</table>
+
+<h1>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h1>
+
+<h2>
+<a id="javascript" class="anchor" href="#javascript" aria-hidden="true"><span class="octicon octicon-link"></span></a>Javascript</h2>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> myApp <span class="pl-k">=</span> angular.module(<span class="pl-s"><span class="pl-pds">'</span>myApp<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>angular-map-it<span class="pl-pds">'</span></span>]);
+myApp.controller(<span class="pl-s"><span class="pl-pds">'</span>Ctrl<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>$scope<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">$scope</span>) {
+
+    $scope.valueRange <span class="pl-k">=</span> [<span class="pl-c1">0</span>,<span class="pl-c1">100</span>];
+    $scope.colorRange <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">"</span>#F03B20<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>#FFEDA0<span class="pl-pds">"</span></span>];
+    $scope.dimension <span class="pl-k">=</span> <span class="pl-c1">600</span>;
+    $scope.mapWidth <span class="pl-k">=</span> <span class="pl-c1">600</span>;
+    $scope.descriptiveText <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>failure %<span class="pl-pds">'</span></span>;
+    $scope.countryFillColor <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>#aaa<span class="pl-pds">"</span></span>;
+    $scope.countryBorderColor <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>#fff<span class="pl-pds">"</span></span>;
+    $scope.worldData <span class="pl-k">=</span> [
+        {
+          <span class="pl-s"><span class="pl-pds">"</span>countryCode<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>AFG<span class="pl-pds">"</span></span>,
+          <span class="pl-s"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">10</span>
+        },
+        {
+          <span class="pl-s"><span class="pl-pds">"</span>countryCode<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>USA<span class="pl-pds">"</span></span>,
+          <span class="pl-s"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">99</span>
+        },
+        {
+          <span class="pl-s"><span class="pl-pds">"</span>countryCode<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>CAN<span class="pl-pds">"</span></span>,
+          <span class="pl-s"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">50</span>
+        },
+        {
+          <span class="pl-s"><span class="pl-pds">"</span>countryCode<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>ISR<span class="pl-pds">"</span></span>,
+          <span class="pl-s"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">2</span>
+        },
+        {
+          <span class="pl-s"><span class="pl-pds">"</span>countryCode<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>NLD<span class="pl-pds">"</span></span>,
+          <span class="pl-s"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">30</span>
+        }
+      ];
+}]);
+</pre></div>
+
+<h2>
+<a id="markup-for-world-map" class="anchor" href="#markup-for-world-map" aria-hidden="true"><span class="octicon octicon-link"></span></a>Markup for world-map</h2>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">world</span><span class="pl-e">-map</span> <span class="pl-e">world-data</span>=<span class="pl-s"><span class="pl-pds">"</span>worldData<span class="pl-pds">"</span></span> <span class="pl-e">value-range</span>=<span class="pl-s"><span class="pl-pds">"</span>valueRange<span class="pl-pds">"</span></span> <span class="pl-e">color-range</span>=<span class="pl-s"><span class="pl-pds">"</span>colorRange<span class="pl-pds">"</span></span> <span class="pl-e">dimension</span>=<span class="pl-s"><span class="pl-pds">"</span>dimension<span class="pl-pds">"</span></span>
+map<span class="pl-e">-width</span>=<span class="pl-s"><span class="pl-pds">"</span>mapWidth<span class="pl-pds">"</span></span> <span class="pl-e">descriptive-text</span>=<span class="pl-s"><span class="pl-pds">"</span>descriptiveText<span class="pl-pds">"</span></span> <span class="pl-e">country-fill-color</span>=<span class="pl-s"><span class="pl-pds">"</span>countryFillColor<span class="pl-pds">"</span></span>
+country<span class="pl-e">-border-color</span>=<span class="pl-s"><span class="pl-pds">"</span>countryBorderColor<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">world</span><span class="pl-e">-map</span>&gt;</pre></div>
+
+<h2>
+<a id="markup-for-globe" class="anchor" href="#markup-for-globe" aria-hidden="true"><span class="octicon octicon-link"></span></a>Markup for globe</h2>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">globe</span> <span class="pl-e">world-data</span>=<span class="pl-s"><span class="pl-pds">"</span>worldData<span class="pl-pds">"</span></span> <span class="pl-e">value-range</span>=<span class="pl-s"><span class="pl-pds">"</span>valueRange<span class="pl-pds">"</span></span> <span class="pl-e">color-range</span>=<span class="pl-s"><span class="pl-pds">"</span>colorRange<span class="pl-pds">"</span></span> <span class="pl-e">dimension</span>=<span class="pl-s"><span class="pl-pds">"</span>dimension<span class="pl-pds">"</span></span>
+country<span class="pl-e">-fill-color</span>=<span class="pl-s"><span class="pl-pds">"</span>countryFillColor<span class="pl-pds">"</span></span> <span class="pl-e">country-border-color</span>=<span class="pl-s"><span class="pl-pds">"</span>countryBorderColor<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">globe</span>&gt;</pre></div>
+
+<h2>
+<a id="markup-for-globe-touch" class="anchor" href="#markup-for-globe-touch" aria-hidden="true"><span class="octicon octicon-link"></span></a>Markup for globe-touch</h2>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">globe</span><span class="pl-e">-touch</span> <span class="pl-e">world-data</span>=<span class="pl-s"><span class="pl-pds">"</span>worldData<span class="pl-pds">"</span></span> <span class="pl-e">value-range</span>=<span class="pl-s"><span class="pl-pds">"</span>valueRange<span class="pl-pds">"</span></span> <span class="pl-e">color-range</span>=<span class="pl-s"><span class="pl-pds">"</span>colorRange<span class="pl-pds">"</span></span> <span class="pl-e">dimension</span>=<span class="pl-s"><span class="pl-pds">"</span>dimension<span class="pl-pds">"</span></span>
+country<span class="pl-e">-fill-color</span>=<span class="pl-s"><span class="pl-pds">"</span>countryFillColor<span class="pl-pds">"</span></span> <span class="pl-e">country-border-color</span>=<span class="pl-s"><span class="pl-pds">"</span>countryBorderColor<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">globe</span><span class="pl-e">-touch</span>&gt;</pre></div>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/sidnan/angular-maps/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/sidnan/angular-maps/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/sidnan/angular-maps"></a> is maintained by <a href="https://github.com/sidnan">sidnan</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
