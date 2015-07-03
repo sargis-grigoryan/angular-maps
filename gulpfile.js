@@ -9,10 +9,10 @@ var listOfCssFiles = 'src/css/*.css';
 
 var listOfJsFiles = 'src/js/*.js';
 
-var concatenatedCssFile = 'angular-maps.css';
-var minifiedCssFile = 'angular-maps.min.css';
-var concatenatedJsFile = 'angular-maps.js';
-var minifiedJsFile = 'angular-maps.min.js';
+var concatenatedCssFile = 'angular-map-it.css';
+var minifiedCssFile = 'angular-map-it.min.css';
+var concatenatedJsFile = 'angular-map-it.js';
+var minifiedJsFile = 'angular-map-it.min.js';
 var buildDirectory = 'dist';
 
 // Lint Task - make sure no error in JS files

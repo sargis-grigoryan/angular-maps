@@ -1,4 +1,4 @@
-# angular-maps
+# angular-map-it
 
 Beautiful, reactive, responsive charts for Angular.JS using D3.js
 
@@ -17,7 +17,7 @@ copy the files from dist/. Then add the sources to your code (adjust paths as ne
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/d3/index.js"></script>
 
-<script type="text/javascript" src="js/angular-maps.js"></script>
+<script type="text/javascript" src="js/angular-map-it.js"></script>
 ```
 
 
@@ -47,7 +47,7 @@ Attribute | Default | Description
 ## Javascript
 
 ```javascript
-var myApp = angular.module('myApp', ['angular-maps']);
+var myApp = angular.module('myApp', ['angular-map-it']);
 myApp.controller('Ctrl', ['$scope', function($scope) {
 
     $scope.valueRange = [0,100];

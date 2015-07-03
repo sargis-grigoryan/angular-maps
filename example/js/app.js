@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['angular-maps']);
+var myApp = angular.module('myApp', ['angular-map-it']);
 myApp.controller('Ctrl', ['$scope', function($scope) {
 
     $scope.valueRange = [0,100];

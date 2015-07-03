@@ -1,10 +1,10 @@
 {
-  "name": "angular-maps",
+  "name": "angular-map-it",
   "version": "0.0.1",
   "description": "Angular module with directives for worldmap with choropleth options, mercator and orthographic projections",
   "keywords": [
     "angular",
-    "maps",
+ "d3",   "maps",
     "world",
     "orthographic",
     "mercator",
@@ -33,7 +33,7 @@
     "example"
   ],
   "main": [
-    "js/angular-maps.js"
+    "js/angular-map-it.js"
   ],
   "repository": {
     "type": "git",
