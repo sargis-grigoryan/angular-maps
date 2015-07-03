@@ -14,11 +14,12 @@
   "authors": [
     "Siddharth Nandagopal <sid.nandhan@gmail.com>"
   ],
-  "dependencies": {
-    "angular": "~1.4",
+  "dependencies": {    
     "d3": "http://d3js.org/d3.v3.min.js"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "angular": "~1.4"
+  },
   "resolutions": {
     "angular": "1.4.1"
   },
