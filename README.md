@@ -98,6 +98,8 @@ map-width="mapWidth" descriptive-text="descriptiveText" country-fill-color="coun
 country-border-color="countryBorderColor"></world-map>
 ```
 
+[Plunker Playground](http://plnkr.co/edit/DrPrLs)
+
 
 ## Markup for globe
 
@@ -106,6 +108,8 @@ country-border-color="countryBorderColor"></world-map>
 country-fill-color="countryFillColor" country-border-color="countryBorderColor"></globe>
 ```
 
+[Plunker Playground](http://plnkr.co/edit/W0Y7Joh1mcBXNuFtNnXe)
+
 
 ## Markup for globe-touch
 
@@ -113,3 +117,5 @@ country-fill-color="countryFillColor" country-border-color="countryBorderColor">
 <globe-touch world-data="worldData" value-range="valueRange" color-range="colorRange" dimension="dimension"
 country-fill-color="countryFillColor" country-border-color="countryBorderColor"></globe-touch>
 ```
+
+[Plunker Playground](http://plnkr.co/edit/7cLRe1)
