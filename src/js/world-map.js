@@ -128,7 +128,7 @@ angularMaps.directive('worldMap', function ($parse) {
 
           var tooltipValue=d.properties.name;
           if(data.get(d.id)) {
-            tooltipValue += ' '+ scope.descriptiveText + ' : ' + data.get(d.id).value;
+            tooltipValue += ' '+ scope.descriptiveText + data.get(d.id).value;
           }
           tooltip
             .classed("worldMapTooltipHidden", false)
